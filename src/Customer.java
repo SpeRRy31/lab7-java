@@ -4,26 +4,29 @@ public class Customer implements Serializable{
     private String surname;
     private String name;
     private String fathername;
+    private int year;
     private String address;
     private String phoneNumber;
     private String cardNumber;
     private double bonusBalance;
 
-    public Customer(int id, String surname, String name, String fathername, String address, String phoneNumber, String cardNumber, double bonusBalance){
+    public Customer(int id, String surname, String name, String fathername, int year, String address, String phoneNumber, String cardNumber, double bonusBalance){
         this.id=id;
         this.surname=surname;
         this.name=name;
         this.fathername=fathername;
+        this.year=year;
         this.address=address;
         this.phoneNumber=phoneNumber;
         this.cardNumber=cardNumber;
         this.bonusBalance=bonusBalance;
     }
-    public Customer(int id, String surname, String name, String fathername, String address, String phoneNumber, String cardNumber){
+    public Customer(int id, String surname, String name, String fathername, int year, String address, String phoneNumber, String cardNumber){
         this.id=id;
         this.surname=surname;
         this.name=name;
         this.fathername=fathername;
+        this.year=year;
         this.address=address;
         this.phoneNumber=phoneNumber;
         this.cardNumber=cardNumber;
@@ -49,7 +52,13 @@ public class Customer implements Serializable{
         this.address = address;
     }
 
+    public void setYear(int year) {
+        this.year = year;
+    }
 
+    public int getYear() {
+        return year;
+    }
 
     public void setBonusBalance(double bonusBalance) {
         this.bonusBalance = bonusBalance;
@@ -85,6 +94,7 @@ public class Customer implements Serializable{
                 + "; surname: " + surname
                 + "; name: " + name
                 + "; fathername: " + fathername
+                + "; year: " + year
                 + "; address: " + address
                 + "; phone: " + phoneNumber
                 + "; card: " + cardNumber
@@ -95,6 +105,7 @@ public class Customer implements Serializable{
         return id + "," + surname
                 + "," + name
                 + "," + fathername
+                + "," + year
                 + "," + address
                 + "," + phoneNumber
                 + "," + cardNumber
@@ -107,6 +118,8 @@ public class Customer implements Serializable{
         for (int i=0; i < parts.length; i++){
             System.out.println(i + ":" + parts[i]);
         }
-        return new Customer(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], parts[4], parts[5], parts[6], Double.parseDouble(parts[7]));
+        return new Customer(Integer.parseInt(parts[0]), parts[1], parts[2], parts[3], Integer.parseInt(parts[4]), parts[5], parts[6], parts[7], Double.parseDouble(parts[8]));
     }
+
+
 }

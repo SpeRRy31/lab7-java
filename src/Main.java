@@ -8,19 +8,22 @@ public class Main {
 
     public static void printMenu() {
         System.out.println("Menu choose operation");
-        System.out.println("1 - Generate Customers");
-        System.out.println("2 - Save Customers to .txt");
-        System.out.println("3 - Save Customers to .dat");
-        System.out.println("4 - Load Customers to .txt");
-        System.out.println("5 - Load Customers to .dat");
-        System.out.println("6 - Show Customers by name");
-        System.out.println("7 - Show Customers by range balance");
-        System.out.println("8 - Show Customers with null balance");
-        System.out.println("9 - Show all Customers");
+        System.out.println("1  - Generate Customers");
+        System.out.println("2  - Save Customers to .txt");
+        System.out.println("3  - Save Customers to .dat");
+        System.out.println("4  - Load Customers to .txt");
+        System.out.println("5  - Load Customers to .dat");
+        System.out.println("6  - Show Customers by name");
+        System.out.println("7  - Show Customers by range balance");
+        System.out.println("8  - Show Customers with null balance");
+        System.out.println("9  - Show all Customers");
         System.out.println("10 - Add Customer by id");
         System.out.println("11 - Change Customer by id");
         System.out.println("12 - Delete Customer by id");
-        System.out.println("13 - Exit");
+        System.out.println("13 - Show Customers sorted by balance, name, and surname");
+        System.out.println("14 - Show unique birth years of all customers");
+        System.out.println("15 - Show customer with highest bonuses for each birth year");
+        System.out.println("16 - Exit");
         System.out.printf("\n Input here --> ");
     }
 
@@ -39,7 +42,9 @@ public class Main {
     public void run() {
 
         //CustomerArrayManager app = new CustomerArrayManager();
-        CustomerListManager app = new CustomerListManager();
+//        CustomerListManager app = new CustomerListManager();
+
+        CustomerSetManager app = new CustomerSetManager();
         boolean close = false;
         while (!close) {
             switch (menu()) {
@@ -92,7 +97,21 @@ public class Main {
                     pressEnterToContinue();
                     break;
                 case 13:
-                    close=true;
+                    app.printCustomers(app.getCustomersSortedByBalanceSurnameName());
+                    pressEnterToContinue();
+                    break;
+                case 14:
+                    for (int year : app.getUniqueYearsOfBirth()){
+                        System.out.println(year);
+                    }
+                    pressEnterToContinue();
+                    break;
+                case 15:
+                    app.printCustomers(app.getMaxBonusCustomerPerYear());
+                    pressEnterToContinue();
+                    break;
+                case 16:
+                    close = true;
                     break;
                 default:
                     System.out.println("invalid number");
